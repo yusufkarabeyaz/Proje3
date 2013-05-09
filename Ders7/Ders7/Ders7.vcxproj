@@ -251,6 +251,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{12B00136-4369-4250-9129-76AE477DFDCA}</ProjectGuid>
     <RootNamespace>Ders7</RootNamespace>
+    <ProjectName>Ders7</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

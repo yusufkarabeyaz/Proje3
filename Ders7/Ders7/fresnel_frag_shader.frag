@@ -23,11 +23,10 @@ const vec4 kd = vec4(.5,.7,.9,0);
 const vec4 ks = vec4(.4,.4,.4,0);
 const float es = 16.;
 
-void
-main()
+void main()
 {
     // lighting vectors
-    vec3 Nn = normalize(N);	// normal
+    vec3 Nn = normalize(normal);	// normal
     vec3 In = normalize(V.xyz*E.w - E.xyz*V.w); // -view
     vec3 Hn = normalize(Ln-In);	// half way between view & light
 
@@ -38,8 +37,7 @@ main()
 
     vec3 R = reflect(In,Nn);
     vec3 RH = normalize(R-In);
-    float fresnel = r0 + (1.-r0)*pow(1.+dot(In,RH),5.);
+    float fresnel = r0 + (1.0-r0)*pow(1.0+dot(In,RH),5.0);
     vec4 env = texture2D(env, .5+.5*normalize(R+vec3(0,0,1)).xy);
-
-    gl_FragColor = mix(col,env,fresnel);
+    gl_FragColor = mix(col,env,dot(fresnel,0));
 }

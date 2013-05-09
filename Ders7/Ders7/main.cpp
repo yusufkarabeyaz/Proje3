@@ -91,6 +91,12 @@ static void timerCallback (int value)
 	glutTimerFunc(250, timerCallback, 1);
 }
 
+void IdleFunction(void)
+{
+    
+	glutPostRedisplay();
+}
+
 
 void setupScene(){
     scene = new Scene();
@@ -165,6 +171,7 @@ int main (int argc, char ** argv)
     glutReshapeFunc(ResizeFunction);
     glutDisplayFunc(Draw);
 	glutMotionFunc(Mouse);
+	glutIdleFunc(IdleFunction);
     glutMainLoop();
 
     

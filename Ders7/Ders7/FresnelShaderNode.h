@@ -76,7 +76,7 @@ private:
         
         AttributeNormal = glGetAttribLocation(programId, "Normal");
         printf("Normal Attribute: %d\n", AttributeNormal);
-        
+     
     }
 };
 

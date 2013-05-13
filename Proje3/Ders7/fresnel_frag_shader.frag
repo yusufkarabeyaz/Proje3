@@ -1,5 +1,7 @@
 #version 120
 
+uniform mat4 MV;
+
 // vertex shaderindan gelen veriler
 varying vec3 normal;
 varying vec4 pos;
@@ -14,7 +16,7 @@ vec3 N = normalize(normal);			// surface normal
 
 // direction of brightest point in environment map
 const vec3 Ln = vec3(-.913, 0.365, 0.183);
-uniform sampler2D env;
+const vec4 env = vec4(.1,.2,.3,1);
 
 // lighting parameters -- could pass in as uniform
 const float r0 = .1;		// Fresnel reflectance at zero angle
@@ -38,6 +40,5 @@ void main()
     vec3 R = reflect(In,Nn);
     vec3 RH = normalize(R-In);
     float fresnel = r0 + (1.0-r0)*pow(1.0+dot(In,RH),5.0);
-    vec4 env = texture2D(env, .5+.5*normalize(R+vec3(0,0,1)).xy);
     gl_FragColor = mix(col,env,dot(fresnel,0));
 }

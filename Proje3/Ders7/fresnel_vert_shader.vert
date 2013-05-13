@@ -11,16 +11,13 @@ attribute vec3 Normal;
 
 // fragment shader'a aktarilacak veriler
 varying vec3 normal;
-varying vec4 pos;
 
 // vertex shader main metodu
 void main()
 {	
-    vec4 vVertex = vec4(ModelView * Position);
-    // gl_Position ekranda noktanin nerede olacagini belirtir.
-    gl_Position = MVP * Position;
-    normal = mat3(MVP)*Normal;
-    pos = vVertex;
+	gl_Position = MVP * Position;
+    normal = mat3(ModelView)*Normal;
+
 }
 
 
